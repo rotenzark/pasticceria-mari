@@ -190,6 +190,76 @@ a { color: inherit; }
   transition: transform .8s var(--ease-out), visibility 0s .8s;
 }
 .preloader__inner { text-align: center; }
+
+.preloader__art {
+  width: min(200px, 52vw);
+  height: auto;
+  color: var(--gold-light);
+  display: block;
+  margin: 0 auto 18px;
+}
+.pl-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: pl-draw 1.1s var(--ease-out) forwards;
+}
+.pl-draw path:nth-child(2) { animation-delay: .25s; }
+.pl-draw path:nth-child(3) { animation-delay: .35s; }
+.pl-draw path:nth-child(4) { animation-delay: .45s; }
+.pl-draw path:nth-child(5) { animation-delay: .55s; }
+.pl-draw path:nth-child(6) { animation-delay: .65s; }
+.pl-draw--cup path { animation-delay: .5s; }
+.pl-draw--cup path:nth-child(2) { animation-delay: .8s; }
+.pl-draw--cup path:nth-child(3) { animation-delay: .95s; }
+@keyframes pl-draw { to { stroke-dashoffset: 0; } }
+
+.pl-steam path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation: pl-steam 2s ease-in-out 1.3s infinite;
+}
+.pl-steam path:nth-child(2) { animation-delay: 1.7s; }
+@keyframes pl-steam {
+  0%   { stroke-dashoffset: 1; opacity: 0; transform: translateY(3px); }
+  35%  { stroke-dashoffset: 0; opacity: .9; transform: translateY(0); }
+  70%  { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+
+.preloader__bar {
+  display: block;
+  width: 160px;
+  height: 2px;
+  margin: 26px auto 0;
+  background: rgba(250, 245, 236, .15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.preloader__bar i {
+  display: block;
+  height: 100%;
+  background: var(--gold-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: pl-bar 3s cubic-bezier(.4, .2, .3, 1) forwards;
+}
+@keyframes pl-bar { to { transform: scaleX(1); } }
+
+.preloader__caption {
+  display: block;
+  margin-top: 14px;
+  min-height: 1.6em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(250, 245, 236, .75);
+}
+.preloader__caption.flip { animation: pl-caption .5s var(--ease-out); }
+@keyframes pl-caption {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
 .preloader__name {
   display: block;
   font-family: var(--font-serif);

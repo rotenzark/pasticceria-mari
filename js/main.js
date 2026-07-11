@@ -103,6 +103,10 @@
       'foot.tag': 'Pasticceria artigianale in via Lodovico Montegani 10, Milano. Ogni giorno dalle 6:30.',
       'foot.top': 'Torna su ↑',
 
+      'pre.1': 'Il caffè sta salendo…',
+      'pre.2': 'Sforniamo i cornetti…',
+      'pre.3': 'Benvenuti',
+
       'meta.title': 'Pasticceria Marí — Milano · Artigianale ogni mattina dalle 6:30'
     },
 
@@ -192,6 +196,10 @@
 
       'foot.tag': 'Artisan pâtisserie at via Lodovico Montegani 10, Milan. Every day from 6:30 am.',
       'foot.top': 'Back to top ↑',
+
+      'pre.1': 'The coffee is brewing…',
+      'pre.2': 'Croissants, fresh out of the oven…',
+      'pre.3': 'Welcome',
 
       'meta.title': 'Pasticceria Marí — Milan · Artisan pâtisserie, open daily from 6:30 am'
     }
@@ -287,13 +295,30 @@
   if (REDUCED) {
     finishPreloader();
   } else {
-    var PRELOADER_MIN = 2200; // durata minima dell'intro "Marí" (ms)
+    var PRELOADER_MIN = 3000; // durata minima dell'intro (ms) — allineata all'animazione .preloader__bar
     var preStart = Date.now();
     window.addEventListener('load', function () {
       var rimanente = Math.max(350, PRELOADER_MIN - (Date.now() - preStart));
       setTimeout(finishPreloader, rimanente);
     });
-    setTimeout(finishPreloader, 3200); // fallback: mai bloccare l'utente
+    setTimeout(finishPreloader, 4000); // fallback: mai bloccare l'utente
+
+    // frasi a rotazione del "finto caricamento"
+    var caption = document.getElementById('preloaderCaption');
+    var captionKeys = ['pre.1', 'pre.2', 'pre.3'];
+    var captionIdx = 0;
+    var captionTimer = setInterval(function () {
+      if (preloaderDone || captionIdx >= captionKeys.length - 1) {
+        clearInterval(captionTimer);
+        return;
+      }
+      captionIdx++;
+      caption.textContent = I18N[lang][captionKeys[captionIdx]];
+      caption.classList.remove('flip');
+      void caption.offsetWidth; // riavvia l'animazione
+      caption.classList.add('flip');
+    }, 1000);
+    caption.textContent = I18N[lang][captionKeys[0]];
   }
 
   /* ---------- Nav: stato scrolled ---------- */
