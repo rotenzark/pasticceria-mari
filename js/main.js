@@ -287,8 +287,13 @@
   if (REDUCED) {
     finishPreloader();
   } else {
-    window.addEventListener('load', function () { setTimeout(finishPreloader, 350); });
-    setTimeout(finishPreloader, 1800); // fallback: mai bloccare l'utente
+    var PRELOADER_MIN = 2200; // durata minima dell'intro "Marí" (ms)
+    var preStart = Date.now();
+    window.addEventListener('load', function () {
+      var rimanente = Math.max(350, PRELOADER_MIN - (Date.now() - preStart));
+      setTimeout(finishPreloader, rimanente);
+    });
+    setTimeout(finishPreloader, 3200); // fallback: mai bloccare l'utente
   }
 
   /* ---------- Nav: stato scrolled ---------- */
