@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
   <title>Pasticceria Marí — Milano · Artigianale ogni mattina dalle 6:30</title>
   <meta name="description" content="Pasticceria Marí, via Lodovico Montegani 10, Milano. Brioche appena sfornate, caffè, pasticcini mignon e torte personalizzate per ogni occasione. Aperti ogni giorno dalle 6:30.">
   <meta name="theme-color" content="#2B1A12">
@@ -15,9 +16,7 @@
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232B1A12'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-style='italic' fill='%23D4B96A' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/fonts.css?v=1">
 
   <link rel="stylesheet" href="css/style.css?v=3">
   <script>document.documentElement.classList.replace('no-js','js');</script>
@@ -349,12 +348,12 @@
         </div>
 
         <div class="contatti__map reveal" style="--d:.25s">
-          <iframe
+          <div class="mappa-clic" data-mappa-clic style="--mappa-h: 320px"><template><iframe
             src="https://www.google.com/maps?q=Pasticceria+Mari,+Via+Lodovico+Montegani+10,+Milano&output=embed"
             title="Mappa — Pasticceria Marí, Via Lodovico Montegani 10, Milano"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen></iframe>
+            allowfullscreen></iframe></template><div class="mappa-clic__velo"><a class="mappa-clic__btn" href="https://www.google.com/maps/place/Mari/@45.4362573,9.1773945,17z" target="_blank" rel="noopener">Mostra la mappa</a><p class="mappa-clic__nota">La mappa è di Google: aprendola, Google riceve il tuo indirizzo IP e può usare i suoi cookie.</p></div></div>
         </div>
       </div>
     </section>
@@ -382,8 +381,10 @@
       <p>© 2026 Pasticceria Marí — Milano</p>
       <a href="#top" class="footer__top" data-i18n="foot.top">Torna su ↑</a>
     </div>
-  </footer>
+    <p class="privacy-link"><a href="privacy.html">Privacy</a></p>
+</footer>
 
   <script src="js/main.js?v=3" defer></script>
+<script src="js/mappa-clic.js?v=1" defer></script>
 </body>
 </html>
